@@ -1,0 +1,47 @@
+<h1 class="mb-3"> NFC registration </h1>
+<p>To read NFC tag press <button (click)="read()">read NFC</button></p>
+
+<div *ngIf="status != '' ">
+    <hr>
+    <p><strong>State:</strong> {{status}}</p>
+</div>
+
+<div *ngIf="scannedTag != undefined">
+    <hr>
+    <h2>Details:</h2>
+
+    <div *ngIf="scannedTag.id">
+        <label>Tag Identifier:</label>
+        <p>{{scannedTag.id | bytesToHex:'':':'}}</p>
+    </div>
+
+    <div *ngIf="scannedTag.type">
+        <label>Tag Type:</label>
+        <p>{{scannedTag.type}}</p>
+    </div>
+
+    <div *ngIf="scannedTag.techTypes">
+        <label>Technologies:</label>
+        <p>{{scannedTag.techTypes}}</p>
+    </div>
+
+    <div *ngIf="scannedTag.maxSize">
+        <label>Size:</label>
+        <p>{{scannedTag.maxSize}}</p>
+    </div>
+
+    <div *ngIf="scannedTag.applicationData">
+        <label>Application Data:</label>
+        <p>{{scannedTag.applicationData}}</p>
+    </div>
+
+    <div *ngIf="scannedTag.barcode">
+        <label>Barcode:</label>
+        <p>{{scannedTag.barcode}}</p>
+    </div>
+
+    <div *ngIf="scannedTag.message">
+        <label>Message:</label>
+        <p *ngFor="let record of scannedTagMessage">{{record | recordPayload}}</p>
+    </div>
+</div>
