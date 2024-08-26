@@ -1,12 +1,12 @@
 {
-  "name": "withweb",
-  "version": "110.0.0",
+  "name": "capacitordemo",
+  "version": "112.0.3",
   "scripts": {
     "ng": "ng",
     "prestart": "node aspnetcore-https",
-    "start": "run-script-os",
-    "start:windows": "ng serve --port 44450 --ssl --ssl-cert \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem\" --ssl-key \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.key\"",
-    "start:default": "ng serve --port 44450 --ssl --ssl-cert \"$HOME/.aspnet/https/${npm_package_name}.pem\" --ssl-key \"$HOME/.aspnet/https/${npm_package_name}.key\"",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --port 44450",
+    "start:windows": "ng serve --host 0.0.0.0 --disable-host-check --port 44450 --ssl --ssl-cert \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem\" --ssl-key \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.key\"",
+    "start:default": "ng serve --host 0.0.0.0 --disable-host-check --port 44450 --ssl --ssl-cert \"$HOME/.aspnet/https/${npm_package_name}.pem\" --ssl-key \"$HOME/.aspnet/https/${npm_package_name}.key\"",
     "build": "ng build",
     "build:ssr": "ng run tanez:server:dev",
     "watch": "ng build --watch --configuration development",
@@ -15,10 +15,8 @@
   "private": true,
   "dependencies": {
     "@abacritt/angularx-social-login": "^2.0.0",
-    "@angular/animations": "^15.2.8",
     "@angular/common": "^15.2.8",
     "@angular/compiler": "^15.2.8",
-    "@angular/core": "^15.2.8",
     "@angular/forms": "^15.2.8",
     "@angular/platform-browser": "^15.2.8",
     "@angular/platform-browser-dynamic": "^15.2.8",
@@ -26,6 +24,7 @@
     "@angular/router": "^15.2.8",
     "@aparajita/capacitor-biometric-auth": "^8.0.2",
     "@capacitor/angular": "^2.0.3",
+    "@capacitor/app": "^6.0.1",
     "@capacitor/core": "latest",
     "@capacitor/splash-screen": "^6.0.2",
     "@capawesome-team/capacitor-nfc": "^6.2.1",
@@ -40,7 +39,7 @@
     "run-script-os": "^1.1.6",
     "rxjs": "~7.8.1",
     "tslib": "^2.5.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "^0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.7",

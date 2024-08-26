@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { SafeHtmlPipe } from './pipes/keep-html.pipe';
+import {MatDialogModule} from "@angular/material";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Pages/home/home.component';
@@ -25,12 +26,14 @@ import { RecordPayloadPipe } from './Pages/nfc/record-payload';
     BiometricAuthComponent, 
     NFCComponent, 
     BytesToHexPipe, 
-    RecordPayloadPipe
+    RecordPayloadPipe,
+    CourseDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ReactiveFormsModule,
+    MatDialogModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -44,6 +47,7 @@ import { RecordPayloadPipe } from './Pages/nfc/record-payload';
     provide: LOCALE_ID,
     useValue: 'ru'
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CourseDialogComponent]
 })
 export class AppModule { }

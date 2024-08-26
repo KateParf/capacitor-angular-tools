@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tanez": {
+    "capacitordemo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tanez:build:production"
+              "browserTarget": "capacitordemo:build:production"
             },
             "development": {
-              "browserTarget": "tanez:build:development",
+              "browserTarget": "capacitordemo:build:development",
               "proxyConfig": "proxy.conf.js"
             }
           },
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tanez:build"
+            "browserTarget": "capacitordemo:build"
           }
         },
         "test": {
@@ -138,7 +138,7 @@
       }
     }
   },
-  "defaultProject": "tanez",
+  "defaultProject": "capacitordemo",
   "cli": {
     "analytics": false
   }
