@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { Component, Inject, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import versionJson from '../../../../package.json';
 import { BundleInfo, CapacitorUpdater } from '@capgo/capacitor-updater';
@@ -18,8 +18,8 @@ export class AutoUpdateComponent {
     @Inject('BASE_URL') public baseUrl: string,
     private http: HttpClient,
     private modalService: BsModalService,
-    private changeDetection: ChangeDetectorRef
-  ) {
+    private renderer: Renderer2,
+    private elementRef: ElementRef ) {
 
     //CapacitorUpdater.notifyAppReady(); //!! TODO - перенсти куда то на старт прила
   }
@@ -28,10 +28,10 @@ export class AutoUpdateComponent {
   status: string = "";
   private print(msg: any) {
     console.log(msg);
-    const newDiv: HTMLElement = document.createElement('div');
+    const newDiv: HTMLElement = this.renderer.createElement('div');
     newDiv.setAttribute('class', 'log card');
     newDiv.innerText = msg;
-    document.body.appendChild(newDiv);
+    this.renderer.appendChild(this.elementRef.nativeElement, newDiv);
     //this.status += "\n\n------\n\n" + msg;
   }
 
@@ -118,7 +118,8 @@ export class AutoUpdateComponent {
     this.print("start update app ...");
     ///SplashScreen.show();
     try {
-      let dataUpd = { id: ((this.loadData?.id == undefined) ? "" : this.loadData.id) }
+      this.print(this.loadData);
+      let dataUpd = { id: ((this.loadData == undefined ) ? "" : this.loadData.id) }
       await CapacitorUpdater.set(dataUpd);
       this.print("[v] update ok");
       await CapacitorUpdater.reload();
@@ -133,8 +134,10 @@ export class AutoUpdateComponent {
   // обновить потом
   async laterUpdate() {
     this.bsModalRef?.hide();
+    this.print("update app later");
     try {
-      let dataUpd = { id: ((this.loadData?.id == undefined) ? "" : this.loadData.id) }
+      this.print(this.loadData);
+      let dataUpd = { id: ((this.loadData == undefined ) ? "" : this.loadData.id) }
       await CapacitorUpdater.next(dataUpd);
       this.print("[v] update ok");
       await CapacitorUpdater.reload();
@@ -157,13 +160,13 @@ export class AutoUpdateComponent {
 
     // Do the download during user active app time to prevent failed download
     this.print("downloading ...");
-    const loadData = await CapacitorUpdater.download({
+    this.loadData = await CapacitorUpdater.download({
       version: ver,
       url: this.storedUrl + distFile,
     });
 
     this.print("[v] download finished.");
-    this.print(loadData.version + " | id = " + loadData.id + " | status = " + loadData.status);
+    this.print(this.loadData.version + " | id = " + this.loadData.id + " | status = " + this.loadData.status);
 
     //!! confirm dialog - update now or later
     this.openModalWithComponent();

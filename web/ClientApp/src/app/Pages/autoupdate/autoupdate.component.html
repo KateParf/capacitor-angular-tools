@@ -1,17 +1,13 @@
 <div class="mb-2">
-  <button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Open modal</button>
-
   <h1>Settings</h1>
-  <accordion class="d-flex flex-row align-items-stretch">
+  <accordion class="d-lg-flex flex-row">
     <accordion-group heading="Server settings">
       <p><strong>baseUrl:</strong> {{baseUrl}}</p>
       <p><strong>lockalStorage Url:</strong> {{storedUrl}}</p>
       <form [formGroup]="urlForm" (ngSubmit)="onStoreURL()">
         <label for="URL">URL: &nbsp;</label>
         <input id="URL" type="text" formControlName="URL" />
-        <button type="submit" [disabled]="!urlForm.valid">
-          Submit
-        </button>
+        <button type="submit" [disabled]="!urlForm.valid">Submit</button>
       </form>
     </accordion-group>
 

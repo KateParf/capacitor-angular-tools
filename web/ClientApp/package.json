@@ -1,6 +1,6 @@
 {
   "name": "capacitordemo",
-  "version": "112.0.3",
+  "version": "113.0.1",
   "scripts": {
     "ng": "ng",
     "prestart": "node aspnetcore-https",
