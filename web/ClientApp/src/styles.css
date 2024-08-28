@@ -5,6 +5,26 @@ body {
   margin: 20px;
 }
 
+.log {
+  min-height: 50px;
+  max-width: 50em;
+  justify-content: center;
+  padding-left: 3px;
+  margin: 5px 5px 5px 15px;
+  border: 1px solid rgba(36, 28, 21, 0.3);
+}
+
+.accordion-toggle button{
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+.accordion-toggle button.btn-link:hover, .accordion-toggle button.btn-link:active, .accordion-toggle button.btn-link:focus-visible{
+  color: #007c89;
+  box-shadow: none;
+}
+
+
 button {
   display: inline-block;
   outline: none;
@@ -32,10 +52,10 @@ button:disabled {
 }
 
 button.link {
-  background-color: royalblue;
+  background-color: #6fa4aa;
 }
 
-a.alt-ver{
+a.alt-ver {
   color: #ffffff;
   text-decoration: none;
 }
@@ -53,9 +73,34 @@ form input {
   line-height: 18px;
   font-weight: normal;
 }
-
 form input:focus {
   outline: none;
   border: 1px solid #007c89;
   box-shadow: inset 0 0 0 1px #007c89;
+}
+
+.form-check-input { 
+  border-radius: 72px;
+  border-color: #5a686a;
+  height: 20px;
+  box-shadow: none;
+  width: 30px;
+}
+.form-check-input:hover {
+  background-color: #5a686a;
+}
+.form-check-input:checked {
+  background-color: #007c89;
+  border-color: #007c89;
+}
+.form-check-input:checked:hover {
+  background-color: #006570;
+  box-shadow: none;
+}
+.form-check-input:focus {
+  border-color: #5a686a;
+  box-shadow: none;
+}
+.form-check-input:checked:focus {
+  border-color: #007c89;
 }

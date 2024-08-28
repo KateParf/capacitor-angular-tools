@@ -1,37 +1,56 @@
-import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject, Renderer2 } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { Component, Inject, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import versionJson from '../../../../package.json';
-import { BundleInfo, BundleListResult, CapacitorUpdater } from '@capgo/capacitor-updater';
-import { SplashScreen } from '@capacitor/splash-screen';
+import { BundleInfo, CapacitorUpdater } from '@capgo/capacitor-updater';
 import { App } from '@capacitor/app';
+import { OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
+import { combineLatest, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-autoupdate',
-  templateUrl: './autoupdate.component.html'
+  templateUrl: './autoupdate.component.html',
 })
 
 export class AutoUpdateComponent {
-
   constructor(
     @Inject('BASE_URL') public baseUrl: string,
-    @Inject(DOCUMENT) private document: Document,
     private http: HttpClient,
-    route: ActivatedRoute,
-    private renderer: Renderer2) { 
+    private modalService: BsModalService,
+    private changeDetection: ChangeDetectorRef
+  ) {
 
-      //CapacitorUpdater.notifyAppReady(); //!! TODO - перенсти куда то на старт прила
+    //CapacitorUpdater.notifyAppReady(); //!! TODO - перенсти куда то на старт прила
   }
 
+  // --- вывод лога
+  status: string = "";
+  private print(msg: any) {
+    console.log(msg);
+    const newDiv: HTMLElement = document.createElement('div');
+    newDiv.setAttribute('class', 'log card');
+    newDiv.innerText = msg;
+    document.body.appendChild(newDiv);
+    //this.status += "\n\n------\n\n" + msg;
+  }
+
+  // --- проверка обновляем вручную или автоматически
+  autoUpdate: boolean = localStorage.getItem('autoUpdate') == 'true';
+  setAuto() {
+    this.autoUpdate = !this.autoUpdate;
+    localStorage.setItem('autoUpdate', this.autoUpdate.toString());
+  }
+
+  // --- хранение и запоминание ссылки на сервер где обновления лежат
   public storedUrl: string | null = localStorage.getItem('serverUrl');
 
   urlForm = new FormGroup({
     "URL": new FormControl("",
       [Validators.required,
       Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
-      ])
+      ]),
+    "autoUpdate": new FormControl(false, [])
   });
 
   // обработчик кнопки сохранения введенного УРЛ сервера в стораж
@@ -41,17 +60,14 @@ export class AutoUpdateComponent {
     this.print("storing URL : " + this.storedUrl + " | " + localStorage.getItem('serverUrl'));
   }
 
+  // --- обновление
   currentVersion: string = ''; // тек вер клиента
   accessibleVersions: string[] = []; // все версии на сервере 
-  status: string = "";
   updateFlag: boolean = false; // флаг нужно ли показывать кнопки со скачиванием версий
   bundles: BundleInfo[] = [];
+  loadData: BundleInfo | undefined;
 
-  private print(msg: any) {
-    console.log(msg);
-    this.status += "\n\n------\n\n" + msg;
-  }
-
+  // получение текущей версии клиента из package.json
   private getCurVer() {
     this.print("Get current client version ...");
     this.print("Current client version: " + versionJson.version);
@@ -70,7 +86,6 @@ export class AutoUpdateComponent {
     for (let i = 0; i < this.bundles.length; i++)
       this.print(this.bundles[i].version + " | " + this.bundles[i].downloaded);
 
-
     // выполнять HTTP-запрос к серверу, чтобы проверить наличие обновлений
     this.print("Load server version ...");
 
@@ -79,12 +94,56 @@ export class AutoUpdateComponent {
 
     this.http.get<string[]>(url).subscribe(result => {
       this.accessibleVersions = result;
-      //писать отладку что запрос отправлен на урл такой-то
+      // писать отладку что запрос отправлен на урл такой-то
       this.print("Last ver on server: " + this.accessibleVersions[this.accessibleVersions.length - 1]);
 
-      // вызываем кнопки скачивания версий с сервера
+      // можно рисовать кнопки скачивания версий с сервера
       this.updateFlag = true;
     }, error => console.error(error));
+  }
+
+  // --- вывод модального окна загрузить обновление сейчас или при след заходе
+  bsModalRef?: BsModalRef;
+  @ViewChild('tpl') tpl?: TemplateRef<any>;
+  openModalWithComponent() {
+    this.bsModalRef = this.modalService.show(this.tpl ? this.tpl : "");
+    this.bsModalRef.onHidden?.subscribe(() => {
+      console.log("modal closed");
+    });
+  }
+
+  // обновить прям щас
+  async nowUpdate() {
+    this.bsModalRef?.hide();
+    this.print("start update app ...");
+    ///SplashScreen.show();
+    try {
+      let dataUpd = { id: ((this.loadData?.id == undefined) ? "" : this.loadData.id) }
+      await CapacitorUpdater.set(dataUpd);
+      this.print("[v] update ok");
+      await CapacitorUpdater.reload();
+
+    } catch (err) {
+      this.print("!!! update error:");
+      this.print(err);
+      ///SplashScreen.hide(); // in case the set fail, otherwise the new app will have to hide it
+    }
+  }
+
+  // обновить потом
+  async laterUpdate() {
+    this.bsModalRef?.hide();
+    try {
+      let dataUpd = { id: ((this.loadData?.id == undefined) ? "" : this.loadData.id) }
+      await CapacitorUpdater.next(dataUpd);
+      this.print("[v] update ok");
+      await CapacitorUpdater.reload();
+
+    } catch (err) {
+      this.print("!!! update error:");
+      this.print(err);
+      ///SplashScreen.hide(); // in case the set fail, otherwise the new app will have to hide it
+    }
   }
 
   // обработчик кнопки - version xxx
@@ -102,35 +161,20 @@ export class AutoUpdateComponent {
       version: ver,
       url: this.storedUrl + distFile,
     });
-    
+
     this.print("[v] download finished.");
     this.print(loadData.version + " | id = " + loadData.id + " | status = " + loadData.status);
 
-    this.print("start update app ...");
-    ///SplashScreen.show();
-    try {
-      let dataUpd = { id: loadData.id }
-      //!!! --- await CapacitorUpdater.next(dataUpd); // обновить при след старте
-      await CapacitorUpdater.set(dataUpd); // обновить прям щас
-      this.print("[v] update ok");
-
-      await CapacitorUpdater.reload();
-      
-    } catch (err) {
-      this.print("!!! update error:");
-      this.print(err);
-      ///SplashScreen.hide(); // in case the set fail, otherwise the new app will have to hide it
-    }
-
+    //!! confirm dialog - update now or later
+    this.openModalWithComponent();
 
     //--------------
-
     /*
     let data = { version: ver }
-
+  
     App.addListener('appStateChange', async (state) => {
       this.print("appStateChange listener ...");
-
+  
       if (state.isActive) {
         this.print("state is Active");
         ///
@@ -149,10 +193,5 @@ export class AutoUpdateComponent {
       }
     });
     */
-
   }
-
 }
-
-
-

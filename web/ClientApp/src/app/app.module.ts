@@ -1,25 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-import { SafeHtmlPipe } from './pipes/keep-html.pipe';
-import {MatDialogModule} from "@angular/material";
+import { ModalModule } from 'ngx-bootstrap/modal'; 
+import { AccordionModule } from 'ngx-bootstrap/accordion' 
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './Pages/home/home.component';
 
+import { HomeComponent } from './Pages/home/home.component';
 import { AutoUpdateComponent } from './Pages/autoupdate/autoupdate.component';
 import { BiometricAuthComponent } from './Pages/biometricauth/biometricauth.component';
 import { NFCComponent } from './Pages/nfc/nfc.component';
 import { BytesToHexPipe } from './Pages/nfc/bytes-to-hex.pipe';
 import { RecordPayloadPipe } from './Pages/nfc/record-payload';
-
+ 
 
 @NgModule({
-  declarations: [
-    SafeHtmlPipe,
+  declarations: [    
     AppComponent,
     HomeComponent,
     AutoUpdateComponent, 
@@ -27,13 +26,14 @@ import { RecordPayloadPipe } from './Pages/nfc/record-payload';
     NFCComponent, 
     BytesToHexPipe, 
     RecordPayloadPipe,
-    CourseDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),  
     HttpClientModule,
-    ReactiveFormsModule,
-    MatDialogModule,
+    ReactiveFormsModule,    
+    AccordionModule.forRoot(),
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -45,9 +45,8 @@ import { RecordPayloadPipe } from './Pages/nfc/record-payload';
   ],
   providers: [{
     provide: LOCALE_ID,
-    useValue: 'ru'
+    useValue: 'ru',
   }],
   bootstrap: [AppComponent],
-  entryComponents: [CourseDialogComponent]
 })
 export class AppModule { }

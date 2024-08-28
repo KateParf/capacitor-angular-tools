@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import packageJson from '../../package.json';
 import { CapacitorUpdater } from '@capgo/capacitor-updater';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
