@@ -7,12 +7,14 @@ const config: CapacitorConfig = {
   
   plugins: {
     "CapacitorUpdater": {
-      "autoUpdate": false,
+      "autoUpdate": true,
+      "directUpdate": true,
+      "allowModifyUrl": true,
     }
   },
   
   server: {
-    androidScheme: 'http',
+    androidScheme: 'https',
     cleartext: true
   },
   
