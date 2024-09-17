@@ -11,11 +11,11 @@
 В конце функция вызывает метод Nfc.startScanSession() для начала нового сеанса сканирования. 
 
 На экран выводится информация о метке:
-*Tag Identifier
-*Tag Type
-*Technologies
-*Size
-*Application Data
-*Barcode
-*Message
+* Tag Identifier
+* Tag Type
+* Technologies
+* Size
+* Application Data
+* Barcode
+* Message
 
