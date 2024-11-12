@@ -33,7 +33,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              
+              "src/app/Pages/screentaker/comparePNG.js"
             ]
           },
           "configurations": {

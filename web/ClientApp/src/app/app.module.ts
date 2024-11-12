@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal'; 
 import { AccordionModule } from 'ngx-bootstrap/accordion' 
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
+import { NgxCaptureModule } from "ngx-capture";
 
 import { AppComponent } from './app.component';
 
@@ -15,6 +16,7 @@ import { AutoUpdateComponent } from './Pages/autoupdate/autoupdate.component';
 import { BackgroundTaskComponent } from './Pages/backgroundtask/backgroundtask.component';
 import { BiometricAuthComponent } from './Pages/biometricauth/biometricauth.component';
 import { NFCComponent } from './Pages/nfc/nfc.component';
+import { screentakerComponent } from './Pages/screentaker/screentaker.component';
 import { BytesToHexPipe } from './Pages/nfc/bytes-to-hex.pipe';
 import { RecordPayloadPipe } from './Pages/nfc/record-payload';
 import { dbConfig } from './Pages/backgroundtask/dbConfig';
@@ -27,6 +29,7 @@ import { dbConfig } from './Pages/backgroundtask/dbConfig';
     BackgroundTaskComponent,
     BiometricAuthComponent, 
     NFCComponent, 
+    screentakerComponent,
     BytesToHexPipe, 
     RecordPayloadPipe,
   ],
@@ -35,7 +38,8 @@ import { dbConfig } from './Pages/backgroundtask/dbConfig';
     BrowserAnimationsModule,
     ModalModule.forRoot(),  
     HttpClientModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,   
+    NgxCaptureModule, 
     AccordionModule.forRoot(),
     NgxIndexedDBModule.forRoot(dbConfig),
 
@@ -45,7 +49,7 @@ import { dbConfig } from './Pages/backgroundtask/dbConfig';
       { path: 'nfc', component: NFCComponent },
       { path: 'autoupdate', component: AutoUpdateComponent },
       { path: 'backgroundtask', component: BackgroundTaskComponent },
-
+      { path: 'screentaker', component: screentakerComponent },
     ]),
   ],
   providers: [{

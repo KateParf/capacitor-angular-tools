@@ -548,3 +548,278 @@
  version_build: 1.0
  version_code: 1
  version_os: 14
+
+--- 16.09.2024 15:24:24 ---
+ action: download_fail
+ app_id: com.smsit.capacitordemo
+ device_id: aabffc8a-f28e-42de-8fb2-48ba36fc1231
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:24:32 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: aabffc8a-f28e-42de-8fb2-48ba36fc1231
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:29:55 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:30:02 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:30:19 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:30:21 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:32:17 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:32:24 ---
+ action: download_fail
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:32:42 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:32:45 ---
+ action: download_fail
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:33:01 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:33:02 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:33:08 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:33:08 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:33:14 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:57:59 ---
+ action: download_fail
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:58:08 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:59:17 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 15:59:26 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 16:00:39 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 16:01:53 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 16:02:04 ---
+ action: download_fail
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 16:02:08 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 16:03:53 ---
+ action: app_moved_to_foreground
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
+
+--- 16.09.2024 16:06:11 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: 12a286a0-931a-460d-97eb-e24f7a2ecb6a
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
