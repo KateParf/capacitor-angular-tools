@@ -823,3 +823,14 @@
  version_build: 1.0
  version_code: 1
  version_os: 14
+
+--- 18.11.2024 14:50:03 ---
+ action: app_moved_to_background
+ app_id: com.smsit.capacitordemo
+ device_id: a48db95f-67ef-4250-983a-57364ce316a0
+ platform: android
+ custom_id: 
+ version_name: builtin
+ version_build: 1.0
+ version_code: 1
+ version_os: 14
