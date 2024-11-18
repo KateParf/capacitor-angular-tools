@@ -2,6 +2,17 @@
 
 Используется платный плагин Capacitor для чтения и записи NFC-меток от Capawesome - https://capawesome.io/plugins/nfc/ 
 
+Для Android добавить в `AndroidManifest.xml` после application tag:
+```
+<!-- To get access to the NFC hardware. -->
+<uses-permission android:name="android.permission.NFC" />
+<!-- The minimum SDK version that your application can support. -->
+<uses-sdk android:minSdkVersion="10"/>
+<!-- (Optional) This will ensure that your app appears in Google Play only for devices with NFC hardware. -->
+<uses-feature android:name="android.hardware.nfc" android:required="true" />
+```
+
+
 Для IOS добавить в файл `Info.plist` ключ `NFCReaderUsageDescription`
 
 ```
